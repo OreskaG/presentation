@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<section><p>DRY</p><p>Don't Repeat Yourself</p></section>
+					<section><p>DRY is a principle of software development aimed at reducing repetition of software patterns, replacing it with abstractions or using data normalization to avoid redundancy.</p></section>
+					<section><p>History</p><p> The principle has been formulated by Andy Hunt and Dave Thomas in their book The Pragmatic Programmer (1999). They apply it quite broadly to include database schemas, test plans, the build system, even documentation</p></section>
+					<section>
+						<p>CSS example</p>
+						<pre><code class="hljs" data-trim data-line-numbers>
+							.login__button {
+								margin: 0px;
+								padding: 5px 15px;
+								background-color: green;
+							}
+							.registration__button {
+								margin: 0px;
+								padding: 5px 15px;
+								background-color: yellow;
+							}
+							.create__button {
+								margin: 0px;
+								padding: 5px 15px;
+								background-color: blue;
+							}
+						</code></pre>
+					</section>
+					<section>
+						<pre><code class="hljs" data-trim data-line-numbers>
+							.main__button {
+								margin: 0px;
+								padding: 5px 15px;
+							}
+
+							.login__button {
+								background-color: green;
+							}
+							.registration__button {
+								background-color: yellow;
+							}
+							.create__button {
+								background-color: blue;
+							}
+						</code></pre>
+					</section>
+					<section>
+						<p>JS example</p>
+						<pre><code class="hljs" data-trim data-line-numbers>
+							import { BackendAPIController } from '../controller/api/api';
+
+							async function checkAutorization() {
+								const user = await BackendAPIController.getUserByID();
+								if (user && localStorage.userID === user.id) {
+									return true;
+								} return false;
+							}
+
+							export default checkAutorization;
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<section><p>KISS</p><p>Keep It Simple Stupid</p></section>
+					<section><p>KISS principle states that most systems work best if they are kept simple rather than made complicated, therefore, simplicity should be a key goal in design, and unnecessary complexity should be avoided</p></section>
+					<section><p>History</p><p>The acronym was reportedly coined by Kelly Johnson, lead engineer at the Lockheed Skunk Works (creators of the Lockheed U-2 and SR-71 Blackbird spy planes, among many others). However, the variant "Keep it Short and Simple" is attested from a 1938 issue of the Minneapolis Star.</p></section>
+					<section>
+						<p>JS example</p>
+						<pre><code class="hljs" data-trim data-line-numbers>
+							function capitalizeWord(word) {
+								return word[0].toUpperCase() + word.slice(1);
+							}
+
+							function capitalizeWord(word) {
+								var str = word[0].toUpperCase();
+								for ( let i = 1 ; i &lt; word.length ; i++ ) {
+									str += word[i];
+								}
+								return str;
+							}
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<section><p>YAGNI</p><p>You Aren't Gonna Need It</p></section>
+					<section><p>YAGNI, the process and principle of software design, in which the rejection of redundant functionality is declared as the main goal and/or value, that is, the refusal to add functionality that is not directly needed.</p></section>
+					<section><p>History</p><p>YAGNI was the main slogan of the book Extreme Programming Installed (2001)</p><p>One of the authors Ron Jeffries has written: "Always implement things when you actually need them, never when you just foresee that you need them."</p></section>
+					<section>
+						<ul>
+							<li>The time that would have been spent on adding, testing and improving the necessary functionality is wasted.</li>
+							<li>New functions should be debugged, documented and maintained.</li>
+							<li>The new functionality limits what can be done in the future — unnecessary new features may prevent you from adding new ones later.</li>
+							<li>Until the new features are really needed, it's hard to fully anticipate what they should do and test them. If the new features are not thoroughly tested, they may not work properly when needed later.</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li>This leads to the fact that the software becomes more complex (sometimes excessively complex).</li>
+							<li>If all the functionality is not documented, it may remain unknown to users, but it can create various risks for the security of the user system.</li>
+							<li>Adding new functionality can lead to the desire for even more new functionality, resulting in a "snowball" effect.</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<p>THANKS FOR YOUR TIME</p>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
